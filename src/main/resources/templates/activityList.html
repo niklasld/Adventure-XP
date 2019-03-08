@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:href="http://www.w3.org/1999/xhtml">
+<head>
+
+</head>
+<body>
+<div class="container">
+    <header></header>
+
+    <h1>Activity List</h1>
+
+
+
+                <span th:each="activity : ${activities}">
+                    <a href="#" th:text="${activity.activityName}"></a><br>
+                    <span th:text="${activity.activityDescription}"></span><br><br>
+                </span>
+
+
+
+
+</div>
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+</body>
+</html>

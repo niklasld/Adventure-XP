@@ -20,6 +20,7 @@ public class CustomerController {
     Logger log = Logger.getLogger(AdminController.class.getName());
 
     private final String INDEX = "index";
+    private final String ACTIVITYLIST = "activityList";
 
     @GetMapping("/")
     public String index(Model model) {
@@ -27,5 +28,15 @@ public class CustomerController {
 
 
         return INDEX;
+    }
+
+    @GetMapping("/activityList")
+
+    public String activityList(Model model){
+        log.info("activityList called..");
+
+        model.addAttribute("activities", customerService.getActivities() );
+
+       return ACTIVITYLIST;
     }
 }
