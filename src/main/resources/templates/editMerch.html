@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:href="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>AdventureXP - Edit Merch</title>
+    <link rel="stylesheet" type="text/css" href="../static/style/main.css" th:href="@{/style/main.css}">
+</head>
+<body>
+<div class="container">
+    <header th:include="fragments/header :: navbar"></header>
+
+    <form method="post" action="/updateMerch">
+        <input type="hidden" name="merchId" th:field="${merch.merchId}"><br>
+        <input name="merchName" th:field="${merch.merchName}"><br>
+        <input name="merchDesc" th:field="${merch.merchDesc}"><br>
+        <input name="merchStock" th:field="${merch.merchStock}"><br>
+        <input name="merchPrice" th:field="${merch.merchPrice}"><br>
+        <input type="submit" value="Save Changes">
+    </form>
+
+
+</div>
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+</body>
+</html>
