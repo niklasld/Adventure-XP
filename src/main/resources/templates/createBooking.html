@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:href="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>AdventureXP - Opret booking</title>
+    <link rel="stylesheet" type="text/css" href="../static/style/main.css" th:href="@{/style/main.css}">
+</head>
+<body>
+<div class="container">
+    <header th:include="fragments/header :: navbar"></header>
+
+    <h1>Opret booking</h1>
+
+    <form method="post" th:action="@{/createBooking}" th:object ="${booking}">
+
+        <label>Navn:</label>
+
+        <input type="text" name="bookingName">
+
+        <br>
+
+        <label>Dato:</label>
+
+        <input type="date" name="bookingDate">
+
+        <br>
+
+        <label>Telefon:</label>
+
+        <input type="number" name="bookingPhone">
+
+        <br>
+
+        <label>E-mail:</label>
+
+        <input type="email" name="bookingEmail">
+
+        <br>
+
+        <label>Antal personer:</label>
+
+        <input type="number" name="bookingPersons">
+
+        <br>
+
+        <label>Aktivitet:</label>
+
+        <select name="FK_activityId">
+            <option th:each="activity : ${activities}" th:value="${activity.activityId}" th:text="${activity.activityName}"></option>
+        </select>
+
+        <br>
+
+        <button type="submit">Opret</button>
+
+    </form>
+
+</div>
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+</body>
+</html>
