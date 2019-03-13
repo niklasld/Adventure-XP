@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:href="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>AdventureXP - AktivitetsCenter</title>
+    <link rel="stylesheet" type="text/css" href="../static/style/style.css" th:href="@{/style/style.css}">
+</head>
+<body>
+<div class="container">
+    <header th:include="fragments/header :: navbar"></header>
+</div>
+
+<form method="post" action="/addActivityPost">
+    <input type="text" name="activityName" placeholder="Aktivitets Navn">
+    <textarea name="activityDescription" placeholder="Beskrivelse af aktivitet"></textarea>
+    <input type="submit" value="Opret aktivitet">
+</form>
+
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+</body>
+</html>
