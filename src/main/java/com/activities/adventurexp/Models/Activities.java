@@ -11,6 +11,14 @@ public class Activities {
         this.activityDescription = activityDescription;
     }
 
+    public Activities(String activityName, String activityDescription) {
+        this.activityName = activityName;
+        this.activityDescription = activityDescription;
+    }
+
+    public Activities() {
+    }
+
     public int getActivityId() {
         return activityId;
     }

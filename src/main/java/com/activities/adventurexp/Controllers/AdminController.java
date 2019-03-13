@@ -1,10 +1,12 @@
 package com.activities.adventurexp.Controllers;
 
+import com.activities.adventurexp.Models.Activities;
 import com.activities.adventurexp.Services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.logging.Logger;
 
@@ -18,12 +20,20 @@ public class AdminController {
     AdminService adminService;
 
     Logger log = Logger.getLogger(AdminController.class.getName());
-
+    public final String ADDACTIVITY = "/addActivity";
 
     @GetMapping("/addActivity")
     public String addActivity(Model model){
+        log.info("AddActivity called...");
+        model.addAttribute("newActivity", new Activities());
+        return ADDACTIVITY;
+    }
 
-        model.addAttribute("Add", adminService.addActivities(acti))
+    @PostMapping("/addActivityPost")
+    public String addActivityPost(Activities activity) {
+        log.info("addActivityPost called..");
+        adminService.addActivities(activity);
 
+        return "/activityList";
     }
 }
