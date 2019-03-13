@@ -17,4 +17,5 @@ public class AdminServiceImpl implements AdminService{
         adminRepo.addActivities(activities);
         return activities;
     }
+
 }

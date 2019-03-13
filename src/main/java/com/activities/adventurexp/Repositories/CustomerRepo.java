@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface CustomerRepo {
 
-     List<Activities> getActivities();
+    Activities getActivity(int id);
+
+    List<Activities> getActivities();
 }

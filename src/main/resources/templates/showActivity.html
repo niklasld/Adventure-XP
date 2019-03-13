@@ -7,9 +7,12 @@
 </head>
 <body>
 <div class="container">
-    <header></header>
+    <header th:include="fragments/header :: navbar"></header>
 
     <h1>Activity</h1>
+    <span th:text="${activity.activityName}"></span><br>
+    <span th:text="${activity.activityDescription}"></span><br>
+
 
 
 </div>
