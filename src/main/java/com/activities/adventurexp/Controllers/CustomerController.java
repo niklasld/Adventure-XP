@@ -1,10 +1,12 @@
 package com.activities.adventurexp.Controllers;
 
+import com.activities.adventurexp.Models.Activities;
 import com.activities.adventurexp.Services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 import java.util.logging.Logger;
@@ -39,5 +41,11 @@ public class CustomerController {
         model.addAttribute("activities", customerService.getActivities() );
 
        return ACTIVITYLIST;
+    }
+
+    @GetMapping("/activity/{id}")
+    public String showActivity(@PathVariable("id") int id, Model model) {
+        model.addAttribute("activity", customerService.getActivity(id));
+        return "showActivity";
     }
 }

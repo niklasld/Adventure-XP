@@ -38,6 +38,16 @@ public class CustomerRepoImpl implements CustomerRepo{
     JdbcTemplate template;
 
     @Override
+    public Activities getActivity(int id) {
+
+        String sql = "SELECT activityName, activityDescription FROM Activities WHERE activityId = ?";
+        RowMapper<Activities> rowMapper = new BeanPropertyRowMapper<>(Activities.class);
+
+        Activities activity = template.queryForObject(sql, rowMapper, id);
+        return activity;
+    }
+
+    @Override
     public List<Activities> getActivities() {
         String sql = "SELECT * FROM Activities";
         return this.template.query(sql, new ResultSetExtractor<List<Activities>>() {

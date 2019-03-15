@@ -26,5 +26,10 @@ public class CustomerServiceImpl implements CustomerService{
         return activitiesArrayList;
     }
 
+    public Activities getActivity(int id) {
+
+        Activities activity = customerRepo.getActivity(id);
+        return activity;
+    }
 
 }

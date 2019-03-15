@@ -7,6 +7,7 @@ import java.util.List;
 public interface CustomerService {
 
 
+    Activities getActivity(int id);
     List<Activities> getActivities();
 
 }
