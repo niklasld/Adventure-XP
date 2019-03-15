@@ -2,12 +2,15 @@ package com.activities.adventurexp.Controllers;
 
 import com.activities.adventurexp.Models.Activities;
 import com.activities.adventurexp.Models.Booking;
+import com.activities.adventurexp.Models.Merchandise;
 import com.activities.adventurexp.Services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.logging.Logger;
@@ -52,7 +55,7 @@ public class AdminController {
     }
 
     @PostMapping("/createBooking")
-    public String createBooking(@ModelAttribute Booking booking){
+    public String createBooking(@ModelAttribute Booking booking) {
         String date = booking.getBookingDate();
         log.info(date);
 
@@ -60,9 +63,23 @@ public class AdminController {
 
 
         booking.setBookingDate(dateSplit[2]+"-"+dateSplit[1]+"-"+dateSplit[0]);
+        booking.setBookingDate(dateSplit[2] + "-" + dateSplit[1] + "-" + dateSplit[0]);
 
         adminService.createBooking(booking);
 
-        return  "redirect:/";
+        return "redirect:/";
+    }
+
+    @GetMapping("/editMerch/{id}")
+    public String editMerch(@PathVariable("id") int id, Model model) {
+        model.addAttribute("merch", adminService.getMerchandise(id));
+        return "editMerch";
+    }
+
+    @PostMapping("/updateMerch")
+    public String updateMerch(Merchandise merch) {
+        log.info("updateMerch postmapping called");
+        adminService.updateMerchandise(merch);
+        return "redirect:/";
     }
 }
