@@ -58,6 +58,7 @@ public class AdminController {
 
         String[] dateSplit = date.split("-");
 
+
         booking.setBookingDate(dateSplit[2]+"-"+dateSplit[1]+"-"+dateSplit[0]);
 
         adminService.createBooking(booking);
